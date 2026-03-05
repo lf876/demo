@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>首页 - 自习室预约系统</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body class="bg-slate-50 min-h-screen">
+<!-- 顶部导航 -->
+<nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+<div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="bg-[#2A9D8F] p-2 rounded-lg">
+<span class="iconify text-white text-2xl" data-icon="mdi:book-open-variant"></span>
+</div>
+<span class="text-xl font-bold text-gray-800">自习室预约系统</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#2A9D8F] font-semibold" href="#">首页</a>
+<a class="text-gray-600 hover:text-[#2A9D8F] transition-colors" href="#">预约大厅</a>
+<a class="text-gray-600 hover:text-[#2A9D8F] transition-colors" href="#">我的预约</a>
+<a class="text-gray-600 hover:text-[#2A9D8F] transition-colors" href="#">积分商城</a>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<span class="iconify text-gray-500 text-2xl cursor-pointer" data-icon="solar:bell-bing-bold"></span>
+<span class="absolute -top-1 -right-1 bg-red-500 w-2 h-2 rounded-full border-2 border-white"></span>
+</div>
+<div class="flex items-center space-x-2 pl-4 border-l border-gray-200">
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-[#2A9D8F]" src="https://modao.cc/agent-py/media/generated_images/2026-03-05/4618abe6aa5841d28f6c412a7394aef7.jpg"/>
+<span class="text-sm font-medium text-gray-700">学霸小王</span>
+<span class="iconify text-gray-400" data-icon="mdi:chevron-down"></span>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-[1440px] mx-auto p-6 space-y-8">
+<!-- 今日概览 -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center space-x-4">
+<div class="bg-blue-50 p-4 rounded-xl">
+<span class="iconify text-blue-500 text-3xl" data-icon="solar:users-group-rounded-bold"></span>
+</div>
+<div>
+<p class="text-sm text-gray-500">当前在座</p>
+<h3 class="text-2xl font-bold text-gray-800">128 <span class="text-xs font-normal text-gray-400">位</span></h3>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center space-x-4">
+<div class="bg-emerald-50 p-4 rounded-xl">
+<span class="iconify text-emerald-500 text-3xl" data-icon="solar:chair-bold"></span>
+</div>
+<div>
+<p class="text-sm text-gray-500">空闲座位</p>
+<h3 class="text-2xl font-bold text-emerald-600">42 <span class="text-xs font-normal text-gray-400">个</span></h3>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center space-x-4">
+<div class="bg-amber-50 p-4 rounded-xl">
+<span class="iconify text-amber-500 text-3xl" data-icon="solar:calendar-date-bold"></span>
+</div>
+<div>
+<p class="text-sm text-gray-500">今日已约</p>
+<h3 class="text-2xl font-bold text-gray-800">256 <span class="text-xs font-normal text-gray-400">单</span></h3>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center space-x-4">
+<div class="bg-purple-50 p-4 rounded-xl">
+<span class="iconify text-purple-500 text-3xl" data-icon="solar:cup-star-bold"></span>
+</div>
+<div>
+<p class="text-sm text-gray-500">活跃时长</p>
+<h3 class="text-2xl font-bold text-gray-800">1,402 <span class="text-xs font-normal text-gray-400">h</span></h3>
+</div>
+</div>
+</section>
+<!-- 主体区域 -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- 左侧：预约区域 -->
+<div class="lg:col-span-2 space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-gray-800 flex items-center">
+<span class="w-2 h-6 bg-[#2A9D8F] rounded-full mr-3"></span>
+                        自习区域预约
+                    </h2>
+<div class="flex bg-white rounded-lg p-1 border border-gray-200">
+<button class="px-4 py-1.5 text-sm rounded-md bg-[#2A9D8F] text-white">列表模式</button>
+<button class="px-4 py-1.5 text-sm rounded-md text-gray-500 hover:bg-gray-50 transition-colors">楼层视图</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 房间卡片 1 -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group transition-all hover:shadow-md">
+<div class="relative h-40 overflow-hidden">
+<img alt="Deep focus area" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://modao.cc/agent-py/media/generated_images/2026-03-05/7f815d752417495b83539c80e8f21600.jpg"/>
+<div class="absolute top-3 right-3 bg-red-500 text-white text-[10px] px-2 py-1 rounded-full font-bold">火爆</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg text-gray-800">1号：深度沉浸区</h4>
+<span class="text-emerald-500 text-sm font-medium">剩余 5/40</span>
+</div>
+<p class="text-gray-500 text-xs mb-4">禁止使用带噪音外设，提供隔音耳罩。适合考研、公考深度刷题。</p>
+<div class="flex items-center justify-between">
+<span class="text-xs text-gray-400 italic">4.9分 (1.2k+人约过)</span>
+<button class="px-6 py-2 bg-[#2A9D8F] text-white rounded-lg text-sm hover:bg-[#148383] transition-colors">立即预约</button>
+</div>
+</div>
+</div>
+<!-- 房间卡片 2 -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group transition-all hover:shadow-md">
+<div class="relative h-40 overflow-hidden">
+<img alt="Discussion room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://modao.cc/agent-py/media/generated_images/2026-03-05/8b7e3ea7829e4fc09470f5786d97d662.jpg"/>
+<div class="absolute top-3 right-3 bg-blue-500 text-white text-[10px] px-2 py-1 rounded-full font-bold">多人</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg text-gray-800">2号：研讨协作区</h4>
+<span class="text-emerald-500 text-sm font-medium">剩余 12/24</span>
+</div>
+<p class="text-gray-500 text-xs mb-4">允许轻声讨论，配备超大白板。适合小组作业及学术交流项目。</p>
+<div class="flex items-center justify-between">
+<span class="text-xs text-gray-400 italic">4.7分 (800+人约过)</span>
+<button class="px-6 py-2 bg-[#2A9D8F] text-white rounded-lg text-sm hover:bg-[#148383] transition-colors">立即预约</button>
+</div>
+</div>
+</div>
+<!-- 房间卡片 3 -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group transition-all hover:shadow-md">
+<div class="relative h-40 overflow-hidden">
+<img alt="Solo booth" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://modao.cc/agent-py/media/generated_images/2026-03-05/a3caf2a1344c4614ab3de4d45ee67254.jpg"/>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg text-gray-800">3号：静谧单人包间</h4>
+<span class="text-orange-500 text-sm font-medium">剩余 2/10</span>
+</div>
+<p class="text-gray-500 text-xs mb-4">完全独立空间，可调节灯光。适合远程面试、在线网课场景。</p>
+<div class="flex items-center justify-between">
+<span class="text-xs text-gray-400 italic">4.9分 (500+人约过)</span>
+<button class="px-6 py-2 bg-[#2A9D8F] text-white rounded-lg text-sm hover:bg-[#148383] transition-colors">立即预约</button>
+</div>
+</div>
+</div>
+<!-- 房间卡片 4 -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group transition-all hover:shadow-md">
+<div class="relative h-40 overflow-hidden">
+<img alt="Relax area" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://modao.cc/agent-py/media/generated_images/2026-03-05/b6560c110b2d4cfbb0190bf2c3fcaa53.jpg"/>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg text-gray-800">4号：景观阳光区</h4>
+<span class="text-emerald-500 text-sm font-medium">剩余 18/30</span>
+</div>
+<p class="text-gray-500 text-xs mb-4">面朝窗外绿地，采光极佳。适合轻松阅读、复习非重点课程资料。</p>
+<div class="flex items-center justify-between">
+<span class="text-xs text-gray-400 italic">4.8分 (2.1k+人约过)</span>
+<button class="px-6 py-2 bg-[#2A9D8F] text-white rounded-lg text-sm hover:bg-[#148383] transition-colors">立即预约</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 右侧：侧边栏 -->
+<div class="space-y-8">
+<!-- 流量统计 -->
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+<h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center">
+<span class="iconify mr-2 text-blue-500" data-icon="solar:chart-line-duotone"></span>
+                        入座趋势图 (7天)
+                    </h3>
+<div class="w-full h-[220px]" id="chart"></div>
+</div>
+<!-- 公告栏 -->
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+<h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+<span class="iconify mr-2 text-amber-500" data-icon="solar:notification-lines-duotone"></span>
+                        公告 &amp; 规则
+                    </h3>
+<ul class="space-y-4">
+<li class="flex items-start group">
+<div class="bg-blue-50 text-blue-500 text-[10px] px-2 py-0.5 rounded mt-1 mr-3 flex-shrink-0">通知</div>
+<p class="text-sm text-gray-600 group-hover:text-blue-500 transition-colors cursor-pointer">关于系统下周三全天升级维护的公告</p>
+</li>
+<li class="flex items-start group">
+<div class="bg-red-50 text-red-500 text-[10px] px-2 py-0.5 rounded mt-1 mr-3 flex-shrink-0">紧急</div>
+<p class="text-sm text-gray-600 group-hover:text-red-500 transition-colors cursor-pointer">请勿在深度沉浸区携带带有食物味道的饮品</p>
+</li>
+<li class="flex items-start group">
+<div class="bg-gray-50 text-gray-500 text-[10px] px-2 py-0.5 rounded mt-1 mr-3 flex-shrink-0">规章</div>
+<p class="text-sm text-gray-600 group-hover:text-gray-800 transition-colors cursor-pointer">个人信誉分扣除制度详细说明(2026版)</p>
+</li>
+</ul>
+<a class="block text-center mt-6 text-sm text-[#2A9D8F] hover:underline" href="#">查看全部公告</a>
+</div>
+<!-- 个人信誉 -->
+<div class="bg-gradient-to-br from-[#148383] to-[#2A9D8F] p-6 rounded-2xl text-white shadow-lg overflow-hidden relative">
+<span class="iconify absolute -right-6 -bottom-6 text-white/10 text-9xl rotate-12" data-icon="solar:medal-star-bold"></span>
+<h4 class="font-bold mb-1">我的信誉分</h4>
+<div class="flex items-end space-x-2 mb-4">
+<span class="text-4xl font-black">746</span>
+<span class="text-xs mb-1 bg-white/20 px-2 py-0.5 rounded-full">极好</span>
+</div>
+<p class="text-xs text-white/80 leading-relaxed mb-4">通过守时签到和不违规使用，您的信誉分已进入全省前5%。可享受提前1天预约权益。</p>
+<button class="w-full bg-white text-[#2A9D8F] text-sm font-bold py-2 rounded-lg hover:bg-opacity-90 transition-all">任务中心</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white border-t border-gray-100 mt-12 py-10">
+<div class="max-w-[1440px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center space-x-3 mb-4">
+<div class="bg-[#2A9D8F] p-1.5 rounded-md">
+<span class="iconify text-white text-xl" data-icon="mdi:book-open-variant"></span>
+</div>
+<span class="text-lg font-bold text-gray-800">自习室预约系统</span>
+</div>
+<p class="text-sm text-gray-500 leading-relaxed">致力于为每一位求知者提供最便捷、最舒适、最专注的学习空间预约体验。</p>
+</div>
+<div>
+<h5 class="text-gray-800 font-bold mb-4">产品服务</h5>
+<ul class="text-sm text-gray-500 space-y-2">
+<li><a class="hover:text-[#2A9D8F]" href="#">在线预约</a></li>
+<li><a class="hover:text-[#2A9D8F]" href="#">楼层导览</a></li>
+<li><a class="hover:text-[#2A9D8F]" href="#">储物柜租借</a></li>
+<li><a class="hover:text-[#2A9D8F]" href="#">自习数据分析</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gray-800 font-bold mb-4">支持与帮助</h5>
+<ul class="text-sm text-gray-500 space-y-2">
+<li><a class="hover:text-[#2A9D8F]" href="#">常见问题</a></li>
+<li><a class="hover:text-[#2A9D8F]" href="#">信誉规则</a></li>
+<li><a class="hover:text-[#2A9D8F]" href="#">建议与投诉</a></li>
+<li><a class="hover:text-[#2A9D8F]" href="#">隐私政策</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gray-800 font-bold mb-4">联系我们</h5>
+<div class="space-y-3">
+<div class="flex items-center space-x-2 text-sm text-gray-500">
+<span class="iconify" data-icon="mdi:phone"></span>
+<span>400-123-4567</span>
+</div>
+<div class="flex items-center space-x-2 text-sm text-gray-500">
+<span class="iconify" data-icon="mdi:email"></span>
+<span>support@studyspace.com</span>
+</div>
+<div class="flex space-x-4 pt-2">
+<span class="iconify text-gray-400 text-xl cursor-not-allowed" data-icon="logos:wechat"></span>
+<span class="iconify text-gray-400 text-xl cursor-not-allowed" data-icon="logos:weibo"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-[1440px] mx-auto px-6 mt-10 pt-8 border-t border-gray-50 text-center text-xs text-gray-400">
+            © 2026 自习室预约系统 项目组. All Rights Reserved. 当前日期: 2026-03-05
+        </div>
+</footer>
+<script>
+        // 初始化趋势图表
+        const chartDom = document.getElementById('chart');
+        const myChart = echarts.init(chartDom);
+        const option = {
+            grid: { top: 10, right: 10, bottom: 20, left: 30 },
+            xAxis: {
+                type: 'category',
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                axisLabel: { color: '#999', fontSize: 10 }
+            },
+            yAxis: {
+                type: 'value',
+                splitLine: { lineStyle: { type: 'dashed' } },
+                axisLabel: { color: '#999', fontSize: 10 }
+            },
+            tooltip: { trigger: 'axis' },
+            series: [{
+                data: [120, 132, 101, 134, 190, 230, 210],
+                type: 'line',
+                smooth: true,
+                color: '#2A9D8F',
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: 'rgba(42, 157, 143, 0.3)' },
+                        { offset: 1, color: 'rgba(42, 157, 143, 0)' }
+                    ])
+                }
+            }]
+        };
+        myChart.setOption(option);
+        window.addEventListener('resize', () => myChart.resize());
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>登录 - 自习室预约系统</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f2f5;
+        }
+        .login-container {
+            width: 1000px;
+            height: 600px;
+            display: flex;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+        }
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(135deg, #148383 0%, #2A9D8F 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 40px;
+        }
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-group .icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 20px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 14px 14px 14px 48px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+            outline: none;
+        }
+        .input-field:focus {
+            border-color: #2A9D8F;
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+        }
+        @media (max-width: 768px) {
+            .login-container {
+                width: 90%;
+                height: auto;
+                flex-direction: column;
+            }
+            .left-panel {
+                padding: 40px 20px;
+            }
+            .right-panel {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+<!-- 左侧：品牌展示区 -->
+<div class="left-panel">
+<div class="bg-white/20 p-6 rounded-3xl mb-8">
+<span class="iconify text-white text-7xl" data-icon="mdi:book-open-variant"></span>
+</div>
+<h1 class="text-4xl font-bold mb-4 tracking-wider">自习室预约系统</h1>
+<p class="text-lg font-light opacity-90">专注学习，高效预约</p>
+</div>
+<!-- 右侧：登录操作区 -->
+<div class="right-panel">
+<div class="mb-10 text-center md:text-left">
+<h2 class="text-3xl font-bold text-gray-800 mb-2">欢迎登录</h2>
+<p class="text-gray-500 text-sm">请输入您的账号信息</p>
+</div>
+<form action="index.html" class="space-y-6" method="GET">
+<div class="input-group">
+<span class="icon iconify" data-icon="solar:user-bold"></span>
+<input class="input-field" placeholder="用户名" required="" type="text"/>
+</div>
+<div class="input-group">
+<span class="icon iconify" data-icon="solar:lock-password-bold"></span>
+<input class="input-field" placeholder="密码" required="" type="password"/>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+<label class="flex items-center cursor-pointer">
+<input class="mr-2 rounded border-gray-300 text-[#2A9D8F] focus:ring-[#2A9D8F]" type="checkbox"/>
+                        记住我
+                    </label>
+<a class="hover:text-[#2A9D8F] transition-colors" href="#">忘记密码？</a>
+</div>
+<button class="w-full bg-[#148383] hover:bg-[#0f6b6b] text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:scale-[0.98]" type="submit">
+                    登录
+                </button>
+</form>
+<div class="mt-12 text-center text-sm text-gray-500">
+                没有账号？ 
+                <a class="text-[#2A9D8F] font-semibold hover:underline decoration-2 underline-offset-4" href="#">立即注册</a>
+</div>
+<div class="mt-8 flex justify-center space-x-6 text-gray-400">
+<span class="iconify cursor-pointer hover:text-gray-600 transition-colors" data-icon="logos:wechat"></span>
+<span class="iconify cursor-pointer hover:text-gray-600 transition-colors" data-icon="logos:qq"></span>
+<span class="iconify cursor-pointer hover:text-gray-600 transition-colors" data-icon="logos:alipay"></span>
+</div>
+</div>
+</div>
+</body>
+</html>
